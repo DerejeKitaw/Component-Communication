@@ -4,10 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { HeroParentComponent } from './hero-parent/hero-parent.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeroParentComponent
   ],
   imports: [
     BrowserModule,
