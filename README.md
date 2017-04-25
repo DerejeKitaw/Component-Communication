@@ -1,2 +1,2 @@
 "# Component Communication" 
-Source: https://embed.plnkr.co/?show=preview
+Source: https://angular.io/docs/ts/latest/cookbook/component-communication.html
