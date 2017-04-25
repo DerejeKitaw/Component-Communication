@@ -1,1 +1,1 @@
-"# Component-Communication" 
+"# Component Communication" 
