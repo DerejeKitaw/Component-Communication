@@ -1,0 +1,137 @@
+<voltage-drop></voltage-drop>
+<div>formval:{{voltageDropCalForm.stringify}} </div>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    Voltage Drop Calculator
+  </div>
+  <div class="panel-body">
+    <form class="form-horizontal" novalidate (ngSubmit)="save()" [formGroup]="voltageDropCalForm">
+      <fieldset>
+        <!--Form group for Distance Start-->
+        <div class="form-group" [ngClass]="{'has-error': (voltageDropCalForm.get('distance').touched || 
+                                              voltageDropCalForm.get('distance').dirty) &&
+                                              !voltageDropCalForm.get('distance').valid }">
+
+          <label for="firstNameId" class="col-md-2 control-label">Distance
+                  </label>
+          <div class="col-md-8"><input type="text" class="form-control" id="firstNameId" placeholder="Distance" formControlName="distance" />
+            <span class="help-block" *ngIf="(voltageDropCalForm.get('distance').touched || 
+                                                         voltageDropCalForm.get('distance').dirty) && 
+                                                         voltageDropCalForm.get('distance').errors">
+                            <span *ngIf="voltageDropCalForm.get('distance').errors.required">
+                                Please enter your Distance.
+                            </span>
+
+            </span>
+          </div>
+        </div>
+        <!--Form group for Distance End-->
+
+        <!--Form group for Voltage Start-->
+        <div class="form-group" [ngClass]="{'has-error': (voltageDropCalForm.get('voltage').touched || 
+                                              voltageDropCalForm.get('voltage').dirty) &&
+                                              !voltageDropCalForm.get('voltage').valid }">
+          <label for="voltageId" class="col-md-2 control-label">Voltage
+              </label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="voltageId" placeholder="Voltage" formControlName="voltage">
+            <span class="help-block" *ngIf="(voltageDropCalForm.get('voltage').touched || 
+                                                         voltageDropCalForm.get('voltage').dirty) && 
+                                                         voltageDropCalForm.get('voltage').errors">
+                            <span *ngIf="voltageDropCalForm.get('voltage').errors.required">
+                                Please enter your Voltage.
+                            </span>
+
+            </span>
+          </div>
+        </div>
+
+        <!--Form group for Voltage End-->
+        <!--Form group for current Start-->
+        <div class="form-group" [ngClass]="{'has-error': (voltageDropCalForm.get('current').touched || 
+                                              voltageDropCalForm.get('current').dirty) &&
+                                              !voltageDropCalForm.get('current').valid }">
+
+          <label for="firstNameId" class="col-md-2 control-label">Current
+                  </label>
+          <div class="col-md-8"><input type="text" class="form-control" id="firstNameId" placeholder="current" formControlName="current" />
+            <span class="help-block" *ngIf="(voltageDropCalForm.get('current').touched || 
+                                                         voltageDropCalForm.get('current').dirty) && 
+                                                         voltageDropCalForm.get('current').errors">
+                            <span *ngIf="voltageDropCalForm.get('current').errors.required">
+                                Please enter your Current.
+                            </span>
+
+            </span>
+          </div>
+        </div>
+
+        <!--Form group for current End-->
+        <hr>
+      </fieldset>
+    </form>
+  </div>
+</div>
+<!--Form output for development start-->
+{{voltageDropCalForm.status | json}}
+
+
+<div class='table-responsive'>
+  <table class='table table-striped' *ngIf='voltageDropCalForm.valid'>
+
+    <thead>
+      <tr>
+        <th>Wire Size</th>
+        <th>ohm_kft</th>
+        <th>Voltage Drop</th>
+        <th>% Voltage Drop</th>
+        <th>voltage Drop</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!--<tr *ngFor='let vol of voltageDropCalForm.value |userObjArray:distance '>-->
+      <tr *ngFor='let vol of ohmkft '>
+        <td>{{ vol.Wire_size }}</td>
+        <td>{{ vol.ohm_kft }}</td>
+         <td>{{(voltageDropCalForm.get('current').value * 2 * voltageDropCalForm.get('distance').value) * (vol.ohm_kft / 1000)}}</td>
+         <td>{{((voltageDropCalForm.get('current').value * 2 * voltageDropCalForm.get('distance').value) * (vol.ohm_kft / 1000))*100 / voltageDropCalForm.get('voltage').value}}</td>
+        <td>{{voltageDropCalForm.get('distance').value *  vol.ohm_kft }}</td>
+      </tr>
+      <!--Form output for development start-->
+      <br>Dirty:{{voltageDropCalForm.dirty}}
+      <br>Touched: {{voltageDropCalForm.touched}}
+      <br>Pristin: {{voltageDropCalForm.pristine}}
+      <br>Valid:{{voltageDropCalForm.valid}}
+      <br>{{voltageDropCalForm.distance}}
+      <br>[formval]: {{voltageDropCalForm.value |json}}
+      <br>FormValues:{{voltageDropCalForm.get('distance').value}}
+      <!--Form output for development end-->
+    </tbody>
+  </table>
+</div>
+
+
+
+<!--Form submit buttons start-->
+<div class="form-group">
+  <div class="col-md-6 col-md-offset-2">
+    <span>
+                <button class="btn btn-primary" type="submit">Save</button>
+                </span>
+    <span>
+                <button class="btn btn-primary" 
+                         type="button"
+                         (click)="populateTestData()">Test Data</button>
+                </span>
+    <span>
+                <button class="btn btn-primary" 
+                         type="button"
+                         (click)="clearTestData()">Clear Data</button>
+                </span>
+
+
+  </div>
+</div>
+<!--Form submit buttons end-->
+
+ <br>FormValues:{{voltageDropCalForm.get('distance').value}}
