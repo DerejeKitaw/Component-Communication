@@ -1,153 +1,144 @@
 <div class="container">
-
-<voltage-drop></voltage-drop>
-<div>formval:{{voltageDropCalForm.stringify}} </div>
-<div class="panel panel-primary">
-  <div class="panel-heading">
-    Voltage Drop Calculator
-  </div>
-  <div class="panel-body">
-    <form class="form-horizontal" novalidate (ngSubmit)="save()" [formGroup]="voltageDropCalForm">
-      <fieldset>
-        <!--Form group for Distance Start-->
-        <div class="form-group" [ngClass]="{'has-error': (voltageDropCalForm.get('distance').touched || 
+ <h2>Voltage Drop Calculator</h2>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      
+    </div>
+    <div class="panel-body">
+      <form class="form-horizontal" novalidate (ngSubmit)="save()" [formGroup]="voltageDropCalForm">
+        <fieldset>
+          <!--Form group for Distance Start-->
+          <div class="form-group" [ngClass]="{'has-error': (voltageDropCalForm.get('distance').touched || 
                                               voltageDropCalForm.get('distance').dirty) &&
                                               !voltageDropCalForm.get('distance').valid }">
 
-          <label for="firstNameId" class="col-md-2 control-label">Distance
+            <label for="firstNameId" class="col-md-2 control-label">Distance
                   </label>
-          <div class="col-md-8"><input type="text" class="form-control" id="firstNameId" placeholder="Distance" formControlName="distance" />
-            <span class="help-block" *ngIf="(voltageDropCalForm.get('distance').touched || 
+            <div class="col-md-8"><input type="text" class="form-control" id="firstNameId" placeholder="Distance" formControlName="distance" />
+              <span class="help-block" *ngIf="(voltageDropCalForm.get('distance').touched || 
                                                          voltageDropCalForm.get('distance').dirty) && 
                                                          voltageDropCalForm.get('distance').errors">
                             <span *ngIf="voltageDropCalForm.get('distance').errors.required">
-                                Please enter your Distance.
+                                Distance is requires.
                             </span>
 
-            </span>
+              </span>
+            </div>
           </div>
-        </div>
-        <!--Form group for Distance End-->
+          <!--Form group for Distance End-->
 
-        <!--Form group for Voltage Start-->
-        <div class="form-group" [ngClass]="{'has-error': (voltageDropCalForm.get('voltage').touched || 
+          <!--Form group for Voltage Start-->
+          <div class="form-group" [ngClass]="{'has-error': (voltageDropCalForm.get('voltage').touched || 
                                               voltageDropCalForm.get('voltage').dirty) &&
                                               !voltageDropCalForm.get('voltage').valid }">
-          <label for="voltageId" class="col-md-2 control-label">Voltage
+            <label for="voltageId" class="col-md-2 control-label">Voltage
               </label>
-          <div class="col-md-8">
-            <input type="text" class="form-control" id="voltageId" placeholder="Voltage" formControlName="voltage">
-            <span class="help-block" *ngIf="(voltageDropCalForm.get('voltage').touched || 
+            <div class="col-md-8">
+              <input type="text" class="form-control" id="voltageId" placeholder="Voltage" formControlName="voltage">
+              <span class="help-block" *ngIf="(voltageDropCalForm.get('voltage').touched || 
                                                          voltageDropCalForm.get('voltage').dirty) && 
                                                          voltageDropCalForm.get('voltage').errors">
                             <span *ngIf="voltageDropCalForm.get('voltage').errors.required">
-                                Please enter your Voltage.
+                                Voltage is required.
                             </span>
 
-            </span>
+              </span>
+            </div>
           </div>
-        </div>
 
-        <!--Form group for Voltage End-->
-        <!--Form group for current Start-->
-        <div class="form-group" [ngClass]="{'has-error': (voltageDropCalForm.get('current').touched || 
+          <!--Form group for Voltage End-->
+          <!--Form group for current Start-->
+          <div class="form-group" [ngClass]="{'has-error': (voltageDropCalForm.get('current').touched || 
                                               voltageDropCalForm.get('current').dirty) &&
                                               !voltageDropCalForm.get('current').valid }">
 
-          <label for="firstNameId" class="col-md-2 control-label">Current
+            <label for="firstNameId" class="col-md-2 control-label">Current
                   </label>
-          <div class="col-md-8"><input type="text" class="form-control" id="firstNameId" placeholder="current" formControlName="current" />
-            <span class="help-block" *ngIf="(voltageDropCalForm.get('current').touched || 
+            <div class="col-md-8"><input type="text" class="form-control" id="firstNameId" placeholder="current" formControlName="current" />
+              <span class="help-block" *ngIf="(voltageDropCalForm.get('current').touched || 
                                                          voltageDropCalForm.get('current').dirty) && 
                                                          voltageDropCalForm.get('current').errors">
                             <span *ngIf="voltageDropCalForm.get('current').errors.required">
-                                Please enter your Current.
+                                Current is required.
                             </span>
 
-            </span>
+              </span>
+            </div>
           </div>
-        </div>
 
-        <!--Form group for current End-->
-        <hr>
-      </fieldset>
-    </form>
+          <!--Form group for current End-->
+          <hr>
+        </fieldset>
+      </form>
+    </div>
   </div>
-</div>
-<!--Form output for development start-->
-{{voltageDropCalForm.status | json}}
+  <!--Form output for development start-->
 
+  <div class='.container'>
+    <table class='table table-hover' *ngIf='voltageDropCalForm.valid'>
 
-<div class='.container'>
-  <table class='table table-hover' *ngIf='voltageDropCalForm.valid'>
+      <thead>
+        <tr>
+          <th>Wire Size</th>
+          <!--<th>ohm_kft</th>-->
+          <th>Voltage Drop</th>
+          <th>Voltage Drop %</th>
 
-    <thead>
-      <tr>
-        <th>Wire Size</th>
-        <th>ohm_kft</th>
-        <th>Voltage Drop</th>
-        <th>Voltage Drop</th>
-
-      </tr>
-    </thead>
-    <tbody>
-      <!--<tr *ngFor='let vol of voltageDropCalForm.value |userObjArray:distance '>-->
-      <tr *ngFor='let vol of ohmkft '>
-        <td>{{ vol.Wire_size }}</td>
-        <td>{{ vol.ohm_kft }}</td>
-        <td><voltage-drop 
-        [vd]=true
-        [wireData]='vol' 
-        [current]="voltageDropCalForm.get('current').value"
-        [distance]="voltageDropCalForm.get('distance').value"
-        [voltage]="voltageDropCalForm.get('voltage').value"
-        ></voltage-drop></td>
-           <td><voltage-drop 
-        [vd]=false
-        [wireData]='vol' 
-        [current]="voltageDropCalForm.get('current').value"
-        [distance]="voltageDropCalForm.get('distance').value"
-        [voltage]="voltageDropCalForm.get('voltage').value"
-        ></voltage-drop></td>
-         </tr>
-      <!--Form output for development start-->
-      <br>Dirty:{{voltageDropCalForm.dirty}}
+        </tr>
+      </thead>
+      <tbody>
+        <!--<tr *ngFor='let vol of voltageDropCalForm.value |userObjArray:distance '>-->
+        <tr *ngFor='let vol of ohmkft '>
+          <td>{{ vol.Wire_size }}</td>
+          <!--<td>{{ vol.ohm_kft }}</td>-->
+          <td>
+            <voltage-drop [vd]=true [wireData]='vol' [current]="voltageDropCalForm.get('current').value" [distance]="voltageDropCalForm.get('distance').value"
+              [voltage]="voltageDropCalForm.get('voltage').value"></voltage-drop>
+          </td>
+          <td>
+            <voltage-drop [vd]=false [wireData]='vol' [current]="voltageDropCalForm.get('current').value" [distance]="voltageDropCalForm.get('distance').value"
+              [voltage]="voltageDropCalForm.get('voltage').value"></voltage-drop>
+          </td>
+        </tr>
+        <!--Form output for development start-->
+        <!--<br>Dirty:{{voltageDropCalForm.dirty}}
       <br>Touched: {{voltageDropCalForm.touched}}
       <br>Pristin: {{voltageDropCalForm.pristine}}
       <br>Valid:{{voltageDropCalForm.valid}}
       <br>{{voltageDropCalForm.distance}}
       <br>[formval]: {{voltageDropCalForm.value |json}}
       <br>FormValues:{{voltageDropCalForm.get('distance').value}}
-      <!--Form output for development end-->
-    </tbody>
-  </table>
-</div>
+        {{voltageDropCalForm.status | json}}-->
+        <!--Form output for development end-->
+      </tbody>
+    </table>
+  </div>
 
 
 
-<!--Form submit buttons start-->
-<div class="form-group">
-  <div class="col-md-6 col-md-offset-2">
-    <span>
+  <!--Form submit buttons start-->
+  <div class="form-group">
+    <div class="col-md-6 col-md-offset-2">
+      <span>
                 <button class="btn btn-primary" type="submit">Save</button>
                 </span>
-    <span>
+      <span>
                 <button class="btn btn-primary" 
                          type="button"
                          (click)="populateTestData()">Test Data</button>
                 </span>
-    <span>
+      <span>
                 <button class="btn btn-primary" 
                          type="button"
                          (click)="clearTestData()">Clear Data</button>
                 </span>
 
 
+    </div>
   </div>
-</div>
-<!--Form submit buttons end-->
+  <!--Form submit buttons end-->
 
- <br>FormValues:{{voltageDropCalForm.get('distance').value}}
+  <!--<br>FormValues:{{voltageDropCalForm.get('distance').value}}-->
 
-   
+
 </div>
