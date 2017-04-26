@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {HEROES} from '../hero';
+
 
 @Component({
   selector: 'hero-parent',
@@ -6,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hero-parent.component.css']
 })
 export class HeroParentComponent implements OnInit {
+ heroes =HEROES;
+ dad : string = 'Dady';
 
   constructor() { }
 

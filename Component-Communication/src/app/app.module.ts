@@ -5,11 +5,13 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { HeroParentComponent } from './hero-parent/hero-parent.component';
+import { HeroChildComponent } from './hero-child/hero-child.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeroParentComponent
+    HeroParentComponent,
+    HeroChildComponent
   ],
   imports: [
     BrowserModule,
