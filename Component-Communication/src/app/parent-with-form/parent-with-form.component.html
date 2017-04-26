@@ -1,8 +1,8 @@
 <div class="container">
- <h2>Voltage Drop Calculator</h2>
+  <h2>Voltage Drop Calculator</h2>
   <div class="panel panel-primary">
     <div class="panel-heading">
-      
+
     </div>
     <div class="panel-body">
       <form class="form-horizontal" novalidate (ngSubmit)="save()" [formGroup]="voltageDropCalForm">
@@ -18,9 +18,9 @@
               <span class="help-block" *ngIf="(voltageDropCalForm.get('distance').touched || 
                                                          voltageDropCalForm.get('distance').dirty) && 
                                                          voltageDropCalForm.get('distance').errors">
-                            <span *ngIf="voltageDropCalForm.get('distance').errors.required">
-                                Distance is requires.
-                            </span>
+              <span class="help-block" *ngIf="formErrors.distance">
+                          {{ formErrors.distance }}
+            </span>
 
               </span>
             </div>
@@ -38,9 +38,9 @@
               <span class="help-block" *ngIf="(voltageDropCalForm.get('voltage').touched || 
                                                          voltageDropCalForm.get('voltage').dirty) && 
                                                          voltageDropCalForm.get('voltage').errors">
-                            <span *ngIf="voltageDropCalForm.get('voltage').errors.required">
-                                Voltage is required.
-                            </span>
+                           <span class="help-block" *ngIf="formErrors.voltage">
+                          {{ formErrors.voltage }}
+            </span>
 
               </span>
             </div>
@@ -58,9 +58,9 @@
               <span class="help-block" *ngIf="(voltageDropCalForm.get('current').touched || 
                                                          voltageDropCalForm.get('current').dirty) && 
                                                          voltageDropCalForm.get('current').errors">
-                            <span *ngIf="voltageDropCalForm.get('current').errors.required">
-                                Current is required.
-                            </span>
+                           <span class="help-block" *ngIf="formErrors.current">
+                          {{ formErrors.current }}
+            </span>
 
               </span>
             </div>
