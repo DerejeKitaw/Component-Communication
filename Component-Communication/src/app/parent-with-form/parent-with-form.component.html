@@ -86,7 +86,7 @@
         <th>Wire Size</th>
         <th>ohm_kft</th>
         <th>Voltage Drop</th>
-        <th>% Voltage Drop</th>
+        <th>Voltage Drop</th>
 
       </tr>
     </thead>
@@ -95,9 +95,21 @@
       <tr *ngFor='let vol of ohmkft '>
         <td>{{ vol.Wire_size }}</td>
         <td>{{ vol.ohm_kft }}</td>
-         <td>{{(voltageDropCalForm.get('current').value * 2 * voltageDropCalForm.get('distance').value) * (vol.ohm_kft / 1000) | number:'1.2-2'}} </td>
-         <td>{{((voltageDropCalForm.get('current').value * 2 * voltageDropCalForm.get('distance').value) * (vol.ohm_kft / 1000))*100 / voltageDropCalForm.get('voltage').value | number:'1.2-2'}} %</td>
-      </tr>
+        <td><voltage-drop 
+        [vd]=true
+        [wireData]='vol' 
+        [current]="voltageDropCalForm.get('current').value"
+        [distance]="voltageDropCalForm.get('distance').value"
+        [voltage]="voltageDropCalForm.get('voltage').value"
+        ></voltage-drop></td>
+           <td><voltage-drop 
+        [vd]=false
+        [wireData]='vol' 
+        [current]="voltageDropCalForm.get('current').value"
+        [distance]="voltageDropCalForm.get('distance').value"
+        [voltage]="voltageDropCalForm.get('voltage').value"
+        ></voltage-drop></td>
+         </tr>
       <!--Form output for development start-->
       <br>Dirty:{{voltageDropCalForm.dirty}}
       <br>Touched: {{voltageDropCalForm.touched}}

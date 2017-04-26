@@ -6,7 +6,11 @@ import { Component, OnInit,Input } from '@angular/core';
   styleUrls: ['./voltage-drop.component.css']
 })
 export class VoltageDropComponent implements OnInit {
-@Input() hero;
+@Input() wireData;
+@Input() current;
+@Input() distance;
+@Input() voltage;
+@Input() vd;
   constructor() { }
 
   ngOnInit() {
