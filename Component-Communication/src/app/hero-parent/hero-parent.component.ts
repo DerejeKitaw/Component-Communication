@@ -8,8 +8,8 @@ import {HEROES} from '../hero';
   styleUrls: ['./hero-parent.component.css']
 })
 export class HeroParentComponent implements OnInit {
- heroes =HEROES;
- dad : string = 'Dady';
+ heroes = HEROES;
+ dadFromParent : string = 'Value from parent';
 
   constructor() { }
 
