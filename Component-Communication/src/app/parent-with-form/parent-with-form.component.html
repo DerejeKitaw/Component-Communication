@@ -1,3 +1,5 @@
+<div class="container">
+
 <voltage-drop></voltage-drop>
 <div>formval:{{voltageDropCalForm.stringify}} </div>
 <div class="panel panel-primary">
@@ -76,8 +78,8 @@
 {{voltageDropCalForm.status | json}}
 
 
-<div class='table-responsive'>
-  <table class='table table-striped' *ngIf='voltageDropCalForm.valid'>
+<div class='.container'>
+  <table class='table table-hover' *ngIf='voltageDropCalForm.valid'>
 
     <thead>
       <tr>
@@ -85,7 +87,7 @@
         <th>ohm_kft</th>
         <th>Voltage Drop</th>
         <th>% Voltage Drop</th>
-        <th>voltage Drop</th>
+
       </tr>
     </thead>
     <tbody>
@@ -93,9 +95,8 @@
       <tr *ngFor='let vol of ohmkft '>
         <td>{{ vol.Wire_size }}</td>
         <td>{{ vol.ohm_kft }}</td>
-         <td>{{(voltageDropCalForm.get('current').value * 2 * voltageDropCalForm.get('distance').value) * (vol.ohm_kft / 1000)}}</td>
-         <td>{{((voltageDropCalForm.get('current').value * 2 * voltageDropCalForm.get('distance').value) * (vol.ohm_kft / 1000))*100 / voltageDropCalForm.get('voltage').value}}</td>
-        <td>{{voltageDropCalForm.get('distance').value *  vol.ohm_kft }}</td>
+         <td>{{(voltageDropCalForm.get('current').value * 2 * voltageDropCalForm.get('distance').value) * (vol.ohm_kft / 1000) | number:'1.2-2'}} </td>
+         <td>{{((voltageDropCalForm.get('current').value * 2 * voltageDropCalForm.get('distance').value) * (vol.ohm_kft / 1000))*100 / voltageDropCalForm.get('voltage').value | number:'1.2-2'}} %</td>
       </tr>
       <!--Form output for development start-->
       <br>Dirty:{{voltageDropCalForm.dirty}}
@@ -135,3 +136,6 @@
 <!--Form submit buttons end-->
 
  <br>FormValues:{{voltageDropCalForm.get('distance').value}}
+
+   
+</div>
