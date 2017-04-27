@@ -5,6 +5,8 @@
  {{(current * 2 * distance * (wireData.ohm_kft / 1000))*100 / voltage  | number:'1.2-2'}} %
  <br><span>{{distanceComment}}</span>
  </div>-->
+<div [ngClass]="{'text-danger': voltageDropPercentage > 1.5}">
 
- <div *ngIf="current && vd">{{voltageDrop * wireData.ohm_kft | number:'1.2-2'}}</div>
- <div *ngIf="current && !vd" [ngClass]="{'text-danger': (current * 2 * distance * (wireData.ohm_kft / 1000))*100 / voltage > 1.5}">{{voltageDrop * wireData.ohm_kft * 100 / _voltage | number:'1.2-2'}} %</div>
+ <div *ngIf="current && vd">{{voltageDrop  | number:'1.2-2'}}</div>
+ <div *ngIf="current && !vd">{{voltageDropPercentage | number:'1.2-2'}} %</div>
+</div>

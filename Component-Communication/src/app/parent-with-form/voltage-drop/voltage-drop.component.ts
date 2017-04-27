@@ -6,14 +6,20 @@ import { Component, OnInit,Input } from '@angular/core';
   styleUrls: ['./voltage-drop.component.css']
 })
 export class VoltageDropComponent implements OnInit {
-private _ohm_kft;
+private _ohmkft;
 private _current=0;
 private _distance=0;
 private _voltage=0;
 private _vd;
 private voltageDrop ;
+private voltageDropPercentage ;
 distanceComment: string='<>';
-@Input() wireData;
+@Input() 
+set ohmkft (ohmkft: number) {
+    this._ohmkft = ohmkft ;
+    this.update();
+  }
+  get ohmkft(): number{return this._ohmkft;}
 
 @Input() 
 set current (current: number) {
@@ -47,6 +53,7 @@ set voltage (voltage: number) {
   ngOnInit() {
   }
 update(){
-this.voltageDrop = this._current * 2 * this._distance / 1000
+this.voltageDrop = this._current * 2 * this._distance * this._ohmkft / 1000;
+this.voltageDropPercentage = this.voltageDrop * 100 / this._voltage;
 }
 }

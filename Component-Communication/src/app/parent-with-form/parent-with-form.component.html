@@ -92,11 +92,11 @@
           <td>{{ vol.Wire_size }}</td>
           <!--<td>{{ vol.ohm_kft }}</td>-->
           <td>
-            <voltage-drop [vd]=true [wireData]='vol' [current]="voltageDropCalForm.get('current').value" [distance]="voltageDropCalForm.get('distance').value"
+            <voltage-drop [vd]=true [ohmkft]='vol.ohm_kft' [current]="voltageDropCalForm.get('current').value" [distance]="voltageDropCalForm.get('distance').value"
               [voltage]="voltageDropCalForm.get('voltage').value"></voltage-drop>
           </td>
           <td>
-            <voltage-drop [vd]=false [wireData]='vol' [current]="voltageDropCalForm.get('current').value" [distance]="voltageDropCalForm.get('distance').value"
+            <voltage-drop [vd]=false [ohmkft]='vol.ohm_kft' [current]="voltageDropCalForm.get('current').value" [distance]="voltageDropCalForm.get('distance').value"
               [voltage]="voltageDropCalForm.get('voltage').value"></voltage-drop>
           </td>
         </tr>
