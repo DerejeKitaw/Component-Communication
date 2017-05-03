@@ -1,0 +1,90 @@
+<h2>WireSize Calculator</h2>
+ <form class="form-horizontal" novalidate (ngSubmit)="save()" [formGroup]="wireSizeCalForm">
+        <fieldset>
+          <!--Form group for WireSize Start-->
+         
+          <!--<div class="form-group" [ngClass]="{'has-error': (wireSizeCalForm.get('WireSize').touched || 
+                                              wireSizeCalForm.get('wireSize').dirty) &&
+                                              !wireSizeCalForm.get('wireSize').valid }">
+
+            <label for="firstNameId" class="col-md-2 control-label">WireSize
+                  </label>
+            <div class="col-md-8"><input type="text" class="form-control" id="firstNameId" placeholder="WireSize" formControlName="wireSize" />
+              <span class="help-block" *ngIf="(wireSizeCalForm.get('wireSize').touched || 
+                                                         wireSizeCalForm.get('wireSize').dirty) && 
+                                                         wireSizeCalForm.get('wireSize').errors">
+              <span class="help-block" *ngIf="formErrors.wireSize">
+                          {{ formErrors.wireSize }}
+            </span>
+
+              </span>
+            </div>
+          </div>-->
+
+          <!--Form group for WireSize End-->
+
+          <!--Form group for Voltage Start-->
+
+          
+          <div class="form-group" [ngClass]="{'has-error': (wireSizeCalForm.get('voltage').touched || 
+                                              wireSizeCalForm.get('voltage').dirty) &&
+                                              !wireSizeCalForm.get('voltage').valid }">
+            <label for="voltageId" class="col-md-2 control-label">Voltage
+              </label>
+            <div class="col-md-8">
+              <input type="text" class="form-control" id="voltageId" placeholder="Voltage" formControlName="voltage">
+              <span class="help-block" *ngIf="(wireSizeCalForm.get('voltage').touched || 
+                                                         wireSizeCalForm.get('voltage').dirty) && 
+                                                         wireSizeCalForm.get('voltage').errors">
+                           <span class="help-block" *ngIf="formErrors.voltage">
+                          {{ formErrors.voltage }}
+            </span>
+
+              </span>
+            </div>
+          </div>
+
+          <!--Form group for Voltage End-->
+          <!--Form group for current Start-->
+          <div class="form-group" [ngClass]="{'has-error': (wireSizeCalForm.get('current').touched || 
+                                              wireSizeCalForm.get('current').dirty) &&
+                                              !wireSizeCalForm.get('current').valid }">
+
+            <label for="firstNameId" class="col-md-2 control-label">Current
+                  </label>
+            <div class="col-md-8"><input type="text" class="form-control" id="firstNameId" placeholder="current" formControlName="current" />
+              <span class="help-block" *ngIf="(wireSizeCalForm.get('current').touched || 
+                                                         wireSizeCalForm.get('current').dirty) && 
+                                                         wireSizeCalForm.get('current').errors">
+                           <span class="help-block" *ngIf="formErrors.current">
+                          {{ formErrors.current }}
+            </span>
+
+              </span>
+            </div>
+          </div>
+
+          <!--Form group for current End-->
+          <hr>
+        </fieldset>
+          <!--Form submit buttons start-->
+        <div class="form-group">
+          <div class="col-md-6 col-md-offset-2">
+            <span>
+                      <button class="btn btn-primary" type="submit">Save</button>
+                      </span>
+            <span>
+                      <button class="btn btn-primary" 
+                              type="button"
+                              (click)="populateTestData()">Test Data</button>
+                      </span>
+            <span>
+                      <button class="btn btn-primary" 
+                              type="button"
+                              (click)="clearTestData()">Clear Data</button>
+                      </span>
+
+
+          </div>
+        </div>
+ 
