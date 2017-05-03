@@ -178,6 +178,11 @@ export class ParentWithFormComponent implements OnInit {
     });
   }
   clearTestData(): void {
+       this.voltageDropCalForm.patchValue({
+      distance: '',
+      voltage: '',
+      current: ''
+    });
     console.log('Data cleared');
   }
 
