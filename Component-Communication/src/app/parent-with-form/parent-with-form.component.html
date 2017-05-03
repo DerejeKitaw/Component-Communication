@@ -69,6 +69,27 @@
           <!--Form group for current End-->
           <hr>
         </fieldset>
+          <!--Form submit buttons start-->
+  <div class="form-group">
+    <div class="col-md-6 col-md-offset-2">
+      <span>
+                <button class="btn btn-primary" type="submit">Save</button>
+                </span>
+      <span>
+                <button class="btn btn-primary" 
+                         type="button"
+                         (click)="populateTestData()">Test Data</button>
+                </span>
+      <span>
+                <button class="btn btn-primary" 
+                         type="button"
+                         (click)="clearTestData()">Clear Data</button>
+                </span>
+
+
+    </div>
+  </div>
+  <!--Form submit buttons end-->
       </form>
     </div>
   </div>
@@ -116,27 +137,7 @@
 
 
 
-  <!--Form submit buttons start-->
-  <div class="form-group">
-    <div class="col-md-6 col-md-offset-2">
-      <span>
-                <button class="btn btn-primary" type="submit">Save</button>
-                </span>
-      <span>
-                <button class="btn btn-primary" 
-                         type="button"
-                         (click)="populateTestData()">Test Data</button>
-                </span>
-      <span>
-                <button class="btn btn-primary" 
-                         type="button"
-                         (click)="clearTestData()">Clear Data</button>
-                </span>
 
-
-    </div>
-  </div>
-  <!--Form submit buttons end-->
 
   <!--<br>FormValues:{{voltageDropCalForm.get('distance').value}}-->
 
