@@ -3,7 +3,7 @@
   <fieldset>
     <!--Form group for WireSize Start-->
 
-    <div class="form-group" [ngClass]="{'has-error': (wireSizeCalForm.get('WireSize').touched || 
+    <!--<div class="form-group" [ngClass]="{'has-error': (wireSizeCalForm.get('WireSize').touched || 
                                               wireSizeCalForm.get('WireSize').dirty) &&
                                               !wireSizeCalForm.get('WireSize').valid }">
 
@@ -19,7 +19,16 @@
 
               </span>
             </div>
-          </div>
+          </div>-->
+
+    <div class="form-group">
+        <label for="WireSizeId" class="col-md-2 control-label"> Wire Size:
+          <select class="form-control" formControlName="WireSize">
+              <option *ngFor="let demo of ohmkft" [value]="demo">{{demo.Wire_size}}</option>
+          </select>
+        </label>
+      </div>
+
 
     <!--Form group for WireSize End-->
 
@@ -94,7 +103,7 @@
 <br>Valid:{{wireSizeCalForm.valid}}
 <br>{{wireSizeCalForm.distance}}
 <br>[formval]: {{wireSizeCalForm.value |json}}
-<br>FormValues:{{wireSizeCalForm.get('WireSize').value}}-->
+<br>FormValues:{{wireSizeCalForm.get('WireSize')}}-->
 <!--
 <!--Form output for development end-->
 </form>

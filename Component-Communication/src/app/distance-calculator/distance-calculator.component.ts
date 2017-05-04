@@ -1,84 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl, ValidatorFn, FormArray } from '@angular/forms';
+import { OHMKFT } from '../wire-constants';
 
-const OHMKFT: any[] = [
-  {
-    "Wire_size": "14",
-    "ohm_kft": 3.14
-  },
-  {
-    "Wire_size": "12",
-    "ohm_kft": 1.98
-  },
-  {
-    "Wire_size": "10",
-    "ohm_kft": 1.24
-  },
-  {
-    "Wire_size": "8",
-    "ohm_kft": 0.778
-  },
-  {
-    "Wire_size": "6",
-    "ohm_kft": 0.491
-  },
-  {
-    "Wire_size": "4",
-    "ohm_kft": 0.308
-  },
-  {
-    "Wire_size": "3",
-    "ohm_kft": 0.245
-  },
-  {
-    "Wire_size": "2",
-    "ohm_kft": 0.194
-  },
-  {
-    "Wire_size": "1",
-    "ohm_kft": 0.154
-  },
-  {
-    "Wire_size": "1/0",
-    "ohm_kft": 0.122
-  },
-  {
-    "Wire_size": "2/0",
-    "ohm_kft": 0.0967
-  },
-  {
-    "Wire_size": "3/0",
-    "ohm_kft": 0.0766
-  },
-  {
-    "Wire_size": "4/0",
-    "ohm_kft": 0.0608
-  },
-  {
-    "Wire_size": "250",
-    "ohm_kft": 0.0515
-  },
-  {
-    "Wire_size": "300",
-    "ohm_kft": 0.0429
-  },
-  {
-    "Wire_size": "350",
-    "ohm_kft": 0.0367
-  },
-  {
-    "Wire_size": "400",
-    "ohm_kft": 0.0321
-  },
-  {
-    "Wire_size": "500",
-    "ohm_kft": 0.0258
-  },
-  {
-    "Wire_size": "600",
-    "ohm_kft": 0.0214
-  }
-];
 @Component({
   selector: 'distance-calculator',
   templateUrl: './distance-calculator.component.html',
@@ -95,7 +18,7 @@ private voltageDropPercentage ;
 distanceComment: string='<>';
 
 
-   wireSizeCalForm: FormGroup;
+  wireSizeCalForm: FormGroup;
   formval;
   voltage;
   WireSize;
@@ -131,7 +54,7 @@ distanceComment: string='<>';
   buildForm() {
 
     this.wireSizeCalForm = this.fb.group({
-      WireSize: ['2', [Validators.compose([Validators.required, Validators.pattern('^[0-9]*$')])]],
+      WireSize: '',
       voltage: ['2', [Validators.compose([Validators.required, Validators.pattern('^[0-9]*$')])]],
       current: ['2', [Validators.compose([Validators.required, Validators.pattern('^[0-9]*$')])]]
 
@@ -174,6 +97,8 @@ distanceComment: string='<>';
     this.formValues = JSON.stringify(this.wireSizeCalForm.value);
     this.submitted = true;
     this.formval = this.wireSizeCalForm.value;
+    this._ohmkft=JSON.stringify(this.formval.ohm_kft_al);
+    this.update();
   }
   populateTestData(): void {
     this.wireSizeCalForm.patchValue({
@@ -192,6 +117,10 @@ distanceComment: string='<>';
   }
 update(){
 this.voltageDrop = this._current * 2 * this._distance * this._ohmkft / 1000;
+console.log('voltageDrop: ' + this.voltageDrop);
+console.log('current: ' + this._current);
+console.log('distance: ' + this._distance);
+console.log('ohmkft: ' + this._ohmkft);
 this.voltageDropPercentage = this.voltageDrop * 100 / this._voltage;
 }
 
