@@ -122,13 +122,22 @@ export class ParentWithFormComponent implements OnInit {
     this.buildForm();
 
   }
-  /**    Build the initial form */
+  /**    Build the initial form 
+   * ^                   # Start of string.
+     [0-9]+              # Must have one or more numbers.
+     (                   # Begin optional group.
+         \.              # The decimal point, . must be escaped, 
+                         # or it is treated as "any character".
+         [0-9]{1,2}      # One or two numbers.
+     )?                  # End group, signify it's optional with ?
+     $                   # End of string.
+  */
   buildForm() {
 
     this.voltageDropCalForm = this.fb.group({
-      distance: ['', [Validators.compose([Validators.required, Validators.pattern('^[0-9]*$')])]],
-      voltage: ['', [Validators.compose([Validators.required, Validators.pattern('^[0-9]*$')])]],
-      current: ['', [Validators.compose([Validators.required, Validators.pattern('^[0-9]*$')])]]
+      distance: ['', [Validators.compose([Validators.required, Validators.pattern('^[0-9]+(\.[0-9]{1,2})?$')])]],
+      voltage: ['', [Validators.compose([Validators.required, Validators.pattern('^[0-9]+(\.[0-9]{1,2})?$')])]],
+      current: ['', [Validators.compose([Validators.required, Validators.pattern('^[0-9]+(\.[0-9]{1,2})?$')])]]
 
 
     });
