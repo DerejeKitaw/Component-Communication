@@ -13,6 +13,8 @@ private _voltage=0;
 private _vd;
 private voltageDrop ;
 private voltageDropPercentage ;
+private voltageDropAl ;
+private voltageDropPercentageAl ;
 distanceComment: string='<>';
 @Input() 
 set ohmkft (ohmkft: number) {
@@ -55,5 +57,7 @@ set voltage (voltage: number) {
 update(){
 this.voltageDrop = this._current * 2 * this._distance * this._ohmkft / 1000;
 this.voltageDropPercentage = this.voltageDrop * 100 / this._voltage;
+// this.voltageDropAl = this._current * 2 * this._distance * this._ohmkft_al / 1000;
+// this.voltageDropPercentageAl = this.voltageDrop * 100 / this._voltage;
 }
 }
