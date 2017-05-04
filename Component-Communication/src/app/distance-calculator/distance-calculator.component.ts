@@ -98,18 +98,18 @@ distanceComment: string='<>';
    wireSizeCalForm: FormGroup;
   formval;
   voltage;
-  wiresize;
+  WireSize;
   current;
   formValues;
   ohmkft = OHMKFT;
   submitted = false;
   formErrors = {
-    wiresize: '',
+    WireSize: '',
     voltage: '',
     current: ''
   };
   validationMessages = {
-    wiresize: {
+    WireSize: {
       required: 'WireSize is required',
       pattern: 'WireSize need to be a number'
     },
@@ -131,9 +131,9 @@ distanceComment: string='<>';
   buildForm() {
 
     this.wireSizeCalForm = this.fb.group({
-      wiresize: ['', [Validators.compose([Validators.required, Validators.pattern('^[0-9]*$')])]],
-      voltage: ['', [Validators.compose([Validators.required, Validators.pattern('^[0-9]*$')])]],
-      current: ['', [Validators.compose([Validators.required, Validators.pattern('^[0-9]*$')])]]
+      WireSize: ['2', [Validators.compose([Validators.required, Validators.pattern('^[0-9]*$')])]],
+      voltage: ['2', [Validators.compose([Validators.required, Validators.pattern('^[0-9]*$')])]],
+      current: ['2', [Validators.compose([Validators.required, Validators.pattern('^[0-9]*$')])]]
 
 
     });
