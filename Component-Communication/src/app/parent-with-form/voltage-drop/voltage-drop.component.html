@@ -8,5 +8,13 @@
 <div [ngClass]="{'text-danger': voltageDropPercentage > 1.5}">
 <!--
  <div *ngIf="current && vd">{{voltageDrop  | number:'1.2-2'}}</div>-->
- <div *ngIf="current && !vd">{{voltageDropPercentage | number:'1.2-2'}} %</div>
+ <div *ngIf="current && !vd">
+     {{voltageDropPercentage | number:'1.2-2'}} %
+     <div class="voltDesc" >
+         voltageDrop ={{current}} * 2 *{{distance}} *{{ohmkft}} / 1000 = <strong class="voltDropDesc">{{voltageDrop | number:'1.2-2'}}</strong>
+    </div>
+    <div class="voltDesc">
+        voltageDropPercentage =<strong class="voltDropDesc">{{voltageDrop | number:'1.2-2'}}</strong> * 100 /{{_voltage}}<strong class="voltDescResult">={{voltageDropPercentage | number:'1.2-2'}} %</strong>
+    </div>
+     </div>
 </div>

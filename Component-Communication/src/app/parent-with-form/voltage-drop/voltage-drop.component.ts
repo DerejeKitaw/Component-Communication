@@ -11,6 +11,13 @@ private _current=0;
 private _distance=0;
 private _voltage=0;
 private _vd;
+//For label purpose
+//  ohmkft=this._ohmkft;
+//  current=this._current;
+//  distance=this._distance;
+//  voltage=this._voltage;
+//  vd=this._vd;
+
 private voltageDrop ;
 private voltageDropPercentage ;
 private voltageDropAl ;
