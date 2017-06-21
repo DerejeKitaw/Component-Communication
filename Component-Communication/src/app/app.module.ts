@@ -9,6 +9,7 @@ import { HeroChildComponent } from './hero-child/hero-child.component';
 import { ParentWithFormComponent } from './parent-with-form/parent-with-form.component';
 import { VoltageDropComponent } from './parent-with-form/voltage-drop/voltage-drop.component';
 import { DistanceCalculatorComponent } from './distance-calculator/distance-calculator.component';
+import { PvdesignComponent } from './parent-with-form/pvdesign/pvdesign.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { DistanceCalculatorComponent } from './distance-calculator/distance-calc
     HeroChildComponent,
     ParentWithFormComponent,
     VoltageDropComponent,
-    DistanceCalculatorComponent
+    DistanceCalculatorComponent,
+    PvdesignComponent
   ],
   imports: [
     BrowserModule,
