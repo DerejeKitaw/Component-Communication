@@ -1,3 +1,93 @@
-<p>
-  pvdesign works!
-</p>
+<h2>PV Designer</h2>
+<form class="form-horizontal" novalidate (ngSubmit)="save()" [formGroup]="pvCalForm">
+  <fieldset>
+
+
+    <div class="form-group">
+        <label for="WireSizeId" class="col-md-2 control-label"> Module Type:
+          <select class="form-control" formControlName="PanelType">
+              <option *ngFor="let demo of panel" [value]="demo">{{demo.ModulesType}}</option>
+          </select>
+        </label>
+      </div>
+
+
+    <!--Form group for PanelType End-->
+
+    <!--Form group for Voltage Start-->
+
+
+    <div class="form-group" [ngClass]="{'has-error': (pvCalForm.get('voltage').touched || 
+                                              pvCalForm.get('voltage').dirty) &&
+                                              !pvCalForm.get('voltage').valid }">
+      <label for="voltageId" class="col-md-2 control-label">Voltage
+              </label>
+      <div class="col-md-8">
+        <input type="text" class="form-control" id="voltageId" placeholder="Voltage" formControlName="voltage">
+        <span class="help-block" *ngIf="(pvCalForm.get('voltage').touched || 
+                                                         pvCalForm.get('voltage').dirty) && 
+                                                         pvCalForm.get('voltage').errors">
+                           <span class="help-block" *ngIf="formErrors.voltage">
+                          {{ formErrors.voltage }}
+            </span>
+
+        </span>
+      </div>
+    </div>
+
+    <!--Form group for Voltage End-->
+    <!--Form group for current Start-->
+    <div class="form-group" [ngClass]="{'has-error': (pvCalForm.get('current').touched || 
+                                              pvCalForm.get('current').dirty) &&
+                                              !pvCalForm.get('current').valid }">
+
+      <label for="firstNameId" class="col-md-2 control-label">Current
+                  </label>
+      <div class="col-md-8"><input type="text" class="form-control" id="firstNameId" placeholder="current" formControlName="current" />
+        <span class="help-block" *ngIf="(pvCalForm.get('current').touched || 
+                                                         pvCalForm.get('current').dirty) && 
+                                                         pvCalForm.get('current').errors">
+                           <span class="help-block" *ngIf="formErrors.current">
+                          {{ formErrors.current }}
+            </span>
+
+        </span>
+      </div>
+    </div>
+
+    <!--Form group for current End-->
+    <hr>
+  </fieldset>
+  <!--Form submit buttons start-->
+  <div class="form-group">
+    <div class="col-md-6 col-md-offset-2">
+      <span>
+                      <button class="btn btn-primary" type="submit">Save</button>
+                      </span>
+      <span>
+                      <button class="btn btn-primary" 
+                              type="button"
+                              (click)="populateTestData()">Test Data</button>
+                      </span>
+      <span>
+                      <button class="btn btn-primary" 
+                              type="button"
+                              (click)="clearTestData()">Clear Data</button>
+                      </span>
+
+
+    </div>
+  </div>
+   <!--Form output for development start-->
+<br>Dirty:{{pvCalForm.dirty}}
+<br>Touched: {{pvCalForm.touched}}
+<br>Pristin: {{pvCalForm.pristine}}
+<br>Valid:{{pvCalForm.valid}}
+<br>{{pvCalForm.distance}}
+<br>[formval]: {{pvCalForm.value | json}}
+<br>FormValues:{{pvCalForm.get('PanelType')}}
+<br>val: {{pvCalForm.value['0']}}
+
+<!--
+<!--Form output for development end-->
+</form>
